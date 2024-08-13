@@ -1,0 +1,27 @@
+_shell_tools_completion()
+{
+    TOOLPATH=/usr/bin/shell_tools
+    while read line; do COMPREPLY+=("$line");done < <($TOOLPATH/bin/console complete:$1 $2 $3 "${COMP_WORDS[1]}")
+}
+
+_project_completions()
+{
+    _shell_tools_completion project -p /usr/workspace
+}
+
+_ssh_completions()
+{
+    _shell_tools_completion sshhosts
+}
+
+cdp () {
+    cd /usr/workspace/$1
+}
+
+ide () {
+    /binary/of/ide $1
+}
+
+complete -F _project_completions cdp
+complete -F _project_completions ide
+complete -F _ssh_completions ssh
