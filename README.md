@@ -4,7 +4,7 @@ Small tools for autocompletion in the shell written in PHP
 ### currently implemented functions: 
  - complete:ssh
    - reads your ~/.ssh/config for configured hosts
-   - using -d option outputs a table of your config
+   - using -d option outputs a table of your config [example](./doc/example_ssh.md)
  - complete:project
    - scans the subfolders of a given dir for local git checkouts
 

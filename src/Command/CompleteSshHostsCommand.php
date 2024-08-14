@@ -17,6 +17,8 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 )]
 class CompleteSshHostsCommand extends CompleteCommand
 {
+    private const LOCAL_FORWARD = 'localforward';
+
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
@@ -70,8 +72,9 @@ class CompleteSshHostsCommand extends CompleteCommand
         /** @var Host $host */
         foreach ($hosts as $host) {
             $hostRow = $host->toTableRow($header);
-            $hostRow['localforward'] =
-                $this->decorateForward($hostRow['localforward']);
+            if (array_key_exists(self::LOCAL_FORWARD, $hostRow)) {
+                $hostRow[self::LOCAL_FORWARD] = $this->decorateForward($hostRow[self::LOCAL_FORWARD]);
+            }
             $result[] = $hostRow;
         }
         return $result;
