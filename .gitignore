@@ -14,7 +14,7 @@
 ###< symfony/asset-mapper ###
 /.idea/
 ###> phpunit/phpunit ###
-/phpunit.xml
+/phpunit.xml.dist
 .phpunit.result.cache
 ###< phpunit/phpunit ###
 /.analyse/
